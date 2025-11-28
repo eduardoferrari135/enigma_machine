@@ -204,21 +204,7 @@ Contribuições são bem-vindas! Este projeto tem foco educacional e histórico.
 
 Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
-## 🙏 Agradecimentos
-
-- **Alan Turing** e equipe de Bletchley Park pela quebra histórica do código
-- **Comunidade de criptografia** por preservar o conhecimento histórico
-- **React e TypeScript** por fornecerem ferramentas modernas para educação
-
 ---
 
 **Nota**: Este simulador é uma ferramenta educacional e não deve ser usado para criptografia real. A segurança moderna requer algoritmos muito mais sofisticados que os apresentados aqui.
 
----
-
-<div align="center">
-  <p>Feito com ❤️ para preservar a história da computação</p>
-  <p>
-    <a href="#máquina-enigma---simulador-interativo">Voltar ao topo</a>
-  </p>
-</div>
