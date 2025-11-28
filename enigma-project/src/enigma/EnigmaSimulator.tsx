@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Settings, X, RotateCcw } from 'lucide-react';
-import { EnigmaMachine, EnigmaFactory, MachineLibrary, Alphabet } from './enigma-core'
+import { EnigmaMachine, EnigmaFactory, MachineLibrary, Alphabet } from './enigma-core';
 import './EnigmaSimulator.css';
 
 const EnigmaSimulator: React.FC = () => {
@@ -16,9 +16,10 @@ const EnigmaSimulator: React.FC = () => {
   
   // Configurações
   const [showSettings, setShowSettings] = useState(false);
+  
+  // REMOVIDO: 'rings' do estado inicial
   const [config, setConfig] = useState({
     rotors: ['I', 'II', 'III'], 
-    rings: [0, 0, 0],           
     positions: [0, 0, 0],       
     reflector: 'B',
     plugs: [] as string[]
@@ -28,7 +29,12 @@ const EnigmaSimulator: React.FC = () => {
 
   // --- FUNÇÃO DE RESET/INICIALIZAÇÃO ---
   const resetMachine = useCallback(() => {
-    const machine = EnigmaFactory.createMachine(config);
+    // ALTERAÇÃO: Passamos rings: [0,0,0] fixo aqui para a lógica não quebrar
+    const machine = EnigmaFactory.createMachine({
+        ...config,
+        rings: [0, 0, 0] 
+    });
+    
     setEnigma(machine);
     setRotorPos(machine.getDisplayPositions());
     setOutputTape("");
@@ -100,7 +106,8 @@ const EnigmaSimulator: React.FC = () => {
     return colors[idx % colors.length];
   };
 
-  const updateConfig = (key: 'rotors' | 'rings' | 'positions', idx: number, val: any) => {
+  // Removi 'rings' da tipagem aqui
+  const updateConfig = (key: 'rotors' | 'positions', idx: number, val: any) => {
       const newArr = [...config[key]];
       newArr[idx] = val;
       setConfig({ ...config, [key]: newArr });
@@ -120,9 +127,10 @@ const EnigmaSimulator: React.FC = () => {
                     <button onClick={() => setShowSettings(false)} style={{background:'none', border:'none', color:'#fff', cursor:'pointer'}}><X size={20}/></button>
                 </div>
                 
-                <div className="st-grid">
+                {/* ALTERAÇÃO: Mudei o grid para ter apenas 2 colunas */}
+                <div className="st-grid" style={{ gridTemplateColumns: '100px 1fr' }}>
                     <div></div>
-                    <div className="st-grid-header">Ring (A-Z)</div>
+                    {/* Cabeçalho "Ring" REMOVIDO */}
                     <div className="st-grid-header">Start (A-Z)</div>
 
                     {[0, 1, 2].map((idx) => (
@@ -135,9 +143,9 @@ const EnigmaSimulator: React.FC = () => {
                                     {MachineLibrary.availableRotors.map(k => <option key={k} value={k}>{k}</option>)}
                                 </select>
                             </div>
-                            <select className="st-select" value={Alphabet.toChar(config.rings[idx])} onChange={e => updateConfig('rings', idx, Alphabet.toInt(e.target.value))}>
-                                {alphabetList.map(c => <option key={c} value={c}>{c}</option>)}
-                            </select>
+                            
+                            {/* SELECT DE RINGS REMOVIDO DAQUI */}
+
                             <select className="st-select" value={Alphabet.toChar(config.positions[idx])} onChange={e => updateConfig('positions', idx, Alphabet.toInt(e.target.value))}>
                                 {alphabetList.map(c => <option key={c} value={c}>{c}</option>)}
                             </select>
