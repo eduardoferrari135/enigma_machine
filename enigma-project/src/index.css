@@ -1,0 +1,27 @@
+/* src/index.css */
+:root {
+  font-family: 'Courier New', monospace; /* Combina com a Enigma */
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  background-color: #1a1a1a;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Garante que o container raiz ocupe tudo */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita rolagem lateral */
+}
+
+/* Remove estilos padrões de botões para não conflitar */
+button {
+  font-family: inherit;
+}
