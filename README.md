@@ -102,7 +102,7 @@ enigma-machine/
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/seu-usuario/enigma-machine.git
+   git clone git@github.com:eduardoferrari135/enigma_machine.git
    cd enigma-machine
    ```
 
