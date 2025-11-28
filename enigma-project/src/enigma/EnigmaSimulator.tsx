@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Settings, X, RotateCcw } from 'lucide-react';
-import { EnigmaMachine, EnigmaFactory, MachineLibrary, Alphabet } from './enigma-core';
+import { EnigmaMachine, EnigmaFactory, MachineLibrary, Alphabet } from './enigma-core'
 import './EnigmaSimulator.css';
 
 const EnigmaSimulator: React.FC = () => {
